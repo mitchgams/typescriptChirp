@@ -3,6 +3,11 @@ import apiRouter from './routes';
 
 const path = require('path');
 const app = express();
+
+/******
+ * this is important. w/o this, fetch post/put w/ json
+ * headers don't get processed.
+ */
 app.use(express.json());
 
 app.use(express.static('public'));

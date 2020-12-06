@@ -8,9 +8,9 @@ const Add: React.FC = () => {
     const [text, setText] = useState<string>('');
     const history = useHistory();
 
-    const sendChirp = () => {
+    const handlePost = () => {
         if(user === "" || text === "") {
-            alert('please enter stuff');
+            alert('please enter stuffs');
         } else {
             fetch(`/chirps/`, {
                 method: 'POST',
@@ -49,7 +49,7 @@ const Add: React.FC = () => {
                 <div className="card-footer">
                     <div className="row">
                         <div className="col d-flex justify-content-end">
-                            <button onClick={() => { sendChirp(); }} className="btn btn-secondary" id="delete-chirp">Save Chirp</button>
+                            <button onClick={() => { handlePost(); }} className="btn btn-secondary" id="delete-chirp">Save Chirp</button>
                         </div>
                     </div>
                 </div>

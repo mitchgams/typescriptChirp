@@ -7,7 +7,8 @@ interface IUseParams {
 } 
 
 
-const Edit: React.FC = props => {
+
+const Edit: React.FC = () => {
     const { id } = useParams<IUseParams>();
     const [chirpUser, setUser] = useState<string>('');
     const [chirpText, setText] = useState<string>('');
@@ -24,15 +25,15 @@ const Edit: React.FC = props => {
         getChirp();
     }, []);
 
-    const deleteChirp = () => {
-        fetch(`/chirps/delete/${id}`, {
+    const handleDelete = async() => {
+        const request = await fetch(`/chirps/delete/${id}`, {
             method: 'DELETE'
         })
         history.push('/');
     }
 
-    const editChirp = () => {
-        fetch(`/chirps/edit/${id}`, {
+    const handleEdit = async() => {
+        const request = await fetch(`/chirps/edit/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -41,7 +42,6 @@ const Edit: React.FC = props => {
           })
         history.push('/');
     }
-
     if(!chirpText) {
         return <>Loading...</>;
     } else {
@@ -70,10 +70,10 @@ const Edit: React.FC = props => {
                     <div className="card-footer">
                         <div className="row">
                             <div className="col d-flex justify-content-center">
-                                <button onClick={() => { deleteChirp(); }} className="btn btn-secondary" id="delete-chirp">Delete</button>
+                                <button onClick={() => { handleDelete(); }} className="btn btn-secondary" id="delete-chirp">Delete</button>
                             </div>
                             <div className="col d-flex justify-content-center">
-                                <button onClick={() => { editChirp(); }} className="btn btn-secondary" id="save-chirp">Save</button>
+                                <button onClick={() => { handleEdit(); }} className="btn btn-secondary" id="save-chirp">Save</button>
                             </div>
                         </div>
                     </div>

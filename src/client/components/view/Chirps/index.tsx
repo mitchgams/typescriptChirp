@@ -30,10 +30,13 @@ const Chirps: React.FC<ChirpsProps> = props => {
     
     useEffect(() => { getChirps(); }, []);
 
-
+    /*************
+     * used reverse() because i wanted the new
+     * posts to be on top.
+     */
     return (
         <>
-            {chirps?.map(chirp => {
+            {chirps?.reverse().map(chirp => {
             return (
                 <article key={chirp.id} className="card m-2 p-0 shadow-sm">
                     <h5 className="card-title m-1">{chirp.user}</h5>
