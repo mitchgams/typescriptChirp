@@ -42,10 +42,7 @@ const Edit: React.FC = () => {
           })
         history.push('/');
     }
-    if(!chirpText) {
-        return <>Loading...</>;
-    } else {
-        return (
+    return (
             <>
                 <section className="card m-2 shadow-sm">
                     <h5 className="card-title m-1">Edit Chirp</h5>
@@ -79,8 +76,7 @@ const Edit: React.FC = () => {
                     </div>
                 </section>
             </>
-        );
-    }
+    );
 }
 
 export default Edit; 
