@@ -14,15 +14,13 @@ const Edit: React.FC = () => {
     const [chirpText, setText] = useState<string>('');
     const history = useHistory();
 
-    const getChirp = async() => {
-        let r = await fetch(`/chirps/${id}`);
-        let data = await r.json();
-        setUser(data.user);
-        setText(data.text);
-    }
-
     useEffect(() => {
-        getChirp();
+        (async() => {
+            let r = await fetch(`/chirps/${id}`);
+            let data = await r.json();
+            setUser(data.user);
+            setText(data.text);
+        })();
     }, []);
 
     const handleDelete = async() => {
