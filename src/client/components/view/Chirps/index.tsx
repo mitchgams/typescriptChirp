@@ -42,7 +42,7 @@ const Chirps: React.FC<ChirpsProps> = props => {
                 <article key={chirp.id} className="card m-2 p-0 shadow-sm">
                     <h5 className="card-title m-1">{chirp.user}</h5>
                     <p className="card-body m-0">{chirp.text}</p>
-                    <div className="card-footer m-0 p-0 d-flex justify-content-end"><Link to={`/${chirp.id}/admin`}>[edit]</Link></div>
+                    <div className="card-footer m-0 p-0 d-flex justify-content-end"><Link to={`/${chirp.id}/admin`}>[Admin]</Link></div>
                 </article>
             );
         })}

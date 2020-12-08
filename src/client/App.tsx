@@ -12,9 +12,9 @@ const App: React.FC<IAppProps> = props => {
 			<Header />
 			<main className="container">
 				<Switch>
-					<Route exact path="/:id/admin" component={Edit} />
-					<Route exact path="/chirp/add" component={Add} />
-					<Route path="/" component={Home} />
+					<Route exact path="/:id/admin"><Edit /></Route>
+					<Route exact path="/chirp/add"><Add /></Route>
+					<Route path="/"><Home /></Route>
 				</Switch>
 			</main>
 		</BrowserRouter>
