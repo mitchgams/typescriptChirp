@@ -14,26 +14,26 @@ interface ChirpsProps {}
 const Chirps: React.FC<ChirpsProps> = props => {
 
     const [chirps, setChirps] = useState<IChirps[]>([]);
-
-    const getChirps = async() => {
-        let r = await fetch('/chirps');
-        let data = await r.json();
-        let chirps = Object.keys(data).map(key => {
-            return {
-                id: key,
-                ...data[key]
-            }
-        });
-        chirps.pop();
-        /*************
-         * used reverse() because i wanted the new
-         * posts to be on top.
-         */
-        chirps.reverse();
-        setChirps(chirps);
-    }
     
-    useEffect(() => { getChirps(); }, []);
+    useEffect(() => {
+        (async() => {
+            let r: Response = await fetch('/chirps');
+            let data = await r.json();
+            let chirps = Object.keys(data).map(key => {
+                return {
+                    id: key,
+                    ...data[key]
+                }
+            });
+            chirps.pop();
+            /*************
+             * used reverse() because i wanted the new
+             * posts to be on top.
+             */
+            chirps.reverse();
+            setChirps(chirps);
+        })();
+     }, []);
 
     return (
         <>

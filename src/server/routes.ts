@@ -20,19 +20,17 @@ router.post('/chirps/', (req, res) => {
 
 router.delete('/chirps/delete/:id?', (req, res) => {
     let id = req.params.id;
-    if(id !== undefined) {
+    if(!!id) {
        chirpsStore.DeleteChirp(id);
-       console.log(`Deleting Chirp id: ${id}`);
-       res.sendStatus(200);
+       res.status(200).send(`Chirp ${id} deleted succesfully`);
     }
 });
 
 router.put('/chirps/edit/:id?', (req, res) => {
     let id = req.params.id;
-    if(id !== undefined) {
+    if(!!id) {
         chirpsStore.UpdateChirp(id, req.body);
-        console.log(`Editing chirp id: ${id}`);
-        res.sendStatus(200);
+        res.status(200).send(`Chirp ${id} updated succesfully`);
     }
 });
 

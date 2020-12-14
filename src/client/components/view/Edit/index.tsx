@@ -16,7 +16,7 @@ const Edit: React.FC = () => {
 
     useEffect(() => {
         (async() => {
-            let r = await fetch(`/chirps/${id}`);
+            let r: Response = await fetch(`/chirps/${id}`);
             let data = await r.json();
             setUser(data.user);
             setText(data.text);
@@ -24,14 +24,14 @@ const Edit: React.FC = () => {
     }, []);
 
     const handleDelete = async() => {
-        const request = await fetch(`/chirps/delete/${id}`, {
+        const r: Response = await fetch(`/chirps/delete/${id}`, {
             method: 'DELETE'
         })
         history.push('/');
     }
 
     const handleEdit = async() => {
-        const request = await fetch(`/chirps/edit/${id}`, {
+        const r: Response = await fetch(`/chirps/edit/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'

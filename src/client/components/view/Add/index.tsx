@@ -8,11 +8,11 @@ const Add: React.FC = () => {
     const [text, setText] = useState<string>('');
     const history = useHistory();
 
-    const handlePost = () => {
+    const handlePost = async() => {
         if(user === "" || text === "") {
             alert('please enter stuffs');
         } else {
-            fetch(`/chirps/`, {
+            const r: Response = await fetch(`/chirps/`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
